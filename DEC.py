@@ -212,7 +212,7 @@ class DEC(object):
         if not os.path.exists(save_dir):
             os.makedirs(save_dir)
 
-        logfile = file(save_dir + '/dec_log.csv', 'wb')
+        logfile = file(save_dir + '/sdec_log.csv', 'wb')
         logwriter = csv.DictWriter(logfile, fieldnames=['iter', 'acc', 'nmi', 'ari', 'L'])
         logwriter.writeheader()
 
@@ -282,7 +282,6 @@ if __name__ == "__main__":
                         help='coefficient of clustering loss')
     parser.add_argument('--update_interval', default=140, type=int)
     parser.add_argument('--tol', default=0.001, type=float)
-    parser.add_argument('--save_dir', default='results/dec')
     args = parser.parse_args()
     print args
 
@@ -318,6 +317,6 @@ if __name__ == "__main__":
     dec.model.summary()
     t0 = time()
     y_pred = dec.clustering(x, y=y, tol=args.tol, maxiter=args.maxiter,
-                            update_interval=args.update_interval, save_dir=args.save_dir)
+                            update_interval=args.update_interval, save_dir='results/dec_dataset:'+args.dataset)
     print 'acc:', cluster_acc(y, y_pred)
     print 'clustering time: ', (time() - t0)

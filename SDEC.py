@@ -419,7 +419,7 @@ def sdec(dataset="mnist",gamma=0.1,beta=1,maxiter=2e4,update_interval=20,tol=0.0
     t0 = time()
     y_pred = dec.clustering(x, y=y, tol=tol, maxiter=maxiter,
                                 update_interval=update_interval, save_dir=save_dir)
-    plot_model(dec.model, to_file='MYSDECmodel.png', show_shapes=True)
+    plot_model(dec.model, to_file='sdecmodel.png', show_shapes=True)
     print 'acc:', cluster_acc(y, y_pred)
     print 'clustering time: ', (time() - t0)
 

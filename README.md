@@ -1,11 +1,50 @@
-# SDEC
-* * *
+# Semi-supervised deep embedded clustering (SDEC)
 
-SDEC is the experiment code of paper [Semi-supervised deep embedded clustering](https://www.mendeley.com/catalogue/semisupervised-deep-embedded-clustering/)
+Keras implementation for our paper:
 
-The environment we dependeced in our experiment 
-1. ubuntu16
-2. python2.7
-3. tensorflow
-4. keras
+* Ren Y, Hu K, Dai X, et al. [Semi-supervised deep embedded clustering](https://www.sciencedirect.com/science/article/pii/S0925231218312049)[J]. Neurocomputing, 2019, 325: 121-130.
 
+## Usage
+1. Install [Keras v2.0](https://github.com/fchollet/keras), scikit-learn and git   
+`sudo pip install keras scikit-learn`   
+`sudo apt-get install git`
+2. Clone the code to local.   
+`git clone https://github.com/hkrds1996/SDEC.git SDEC`
+3. Prepare datasets.    
+Into the SDEC dir
+
+        bash getdata.sh
+
+4. Get pre-trained autoencoder's weights.   
+Follow instructions at https://github.com/piiswrong/dec to pre-train the autoencoder.
+Then save the trained weights to a keras model (e.g. mnist_ae_weights.h5) and put it in folder 'ae_weights'.  
+If you do not want to install Caffe package, you can download the pretrained weights from   
+https://github.com/XifengGuo/data-and-models    
+Then put .h5 file in ae_weights in local folder 'ae_weights'.    
+
+5. Run experiment on MNIST.   
+`python SDEC.py mnist --ae_weights ae_weights/mnist_ae_weights.h5`   
+ ,   
+`python IDEC.py mnist --ae_weights ae_weights/mnist_ae_weights.h5`   
+or
+`python DEC.py mnist 0 --ae_weights ae_weights/mnist_ae_weights.h5` 
+
+The SDEC (DEC or iDEC) model is saved to "results/sdec/SDEC_model_final.h5" ("results/dec/DEC_model_final.h5" or "results/idec/IDEC_model_final.h5").
+
+6. Run experiment on USPS.   
+`python SDEC.py usps --ae_weights ae_weights/usps_ae_weights.h5`   
+ ,   
+`python IDEC.py usps --ae_weights ae_weights/usps_ae_weights.h5`   
+or
+`python DEC.py usps 0 --ae_weights ae_weights/usps_ae_weights.h5` 
+
+
+## Models
+The SDEC model:    
+![](./sdec_model.png "SDEC model")
+
+The IDEC model:    
+![](./idec_model.png 'IDEC model')
+
+The DEC model:    
+![](./dec_model.png "DEC model")

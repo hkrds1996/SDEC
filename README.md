@@ -20,19 +20,17 @@ The put the ae_weights file to the dir of SDEC
 
 4. Run experiment on MNIST.   
 `python SDEC.py mnist`
-
 `python IDEC.py mnist`
 or
 `python DEC.py mnist`
 
-The SDEC (DEC or iDEC) model is saved to "results/sdec/SDEC_model_final.h5" ("results/dec/DEC_model_final.h5" or "results/idec/IDEC_model_final.h5").
+The SDEC (DEC or iDEC) model is saved to "results/sdec_dataset:datasetgamma:number/SDEC_model_final.h5" ("results/dec_dataset:dataset/DEC_model_final.h5" or "results/idec_dataset:datasetgamma:number/IDEC_model_final.h5").
 
-6. Run experiment on USPS.   
-`python SDEC.py usps --ae_weights ae_weights/usps_ae_weights.h5`   
- ,   
-`python IDEC.py usps --ae_weights ae_weights/usps_ae_weights.h5`   
+6. Run experiment on USPS, STL, or CIFAR_10.   
+`python SDEC.py datasetname`   
+`python IDEC.py datasetname`   
 or
-`python DEC.py usps 0 --ae_weights ae_weights/usps_ae_weights.h5` 
+`python DEC.py datasetname` 
 
 
 ## Models

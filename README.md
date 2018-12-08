@@ -10,24 +10,20 @@ Keras implementation for our paper:
 `sudo apt-get install git`
 2. Clone the code to local.   
 `git clone https://github.com/hkrds1996/SDEC.git SDEC`
-3. Prepare datasets.    
-Into the SDEC dir
 
-        bash getdata.sh
-
-4. Get pre-trained autoencoder's weights.   
+3. Get pre-trained autoencoder's weights.   
 Follow instructions at https://github.com/piiswrong/dec to pre-train the autoencoder.
 Then save the trained weights to a keras model (e.g. mnist_ae_weights.h5) and put it in folder 'ae_weights'.  
 If you do not want to install Caffe package, you can download the pretrained weights from   
-https://github.com/XifengGuo/data-and-models    
-Then put .h5 file in ae_weights in local folder 'ae_weights'.    
+https://github.com/hkrds1996/data_weights   
+The put the ae_weights file to the dir of SDEC
 
-5. Run experiment on MNIST.   
-`python SDEC.py mnist --ae_weights ae_weights/mnist_ae_weights.h5`   
- ,   
-`python IDEC.py mnist --ae_weights ae_weights/mnist_ae_weights.h5`   
+4. Run experiment on MNIST.   
+`python SDEC.py mnist`
+
+`python IDEC.py mnist`
 or
-`python DEC.py mnist 0 --ae_weights ae_weights/mnist_ae_weights.h5` 
+`python DEC.py mnist`
 
 The SDEC (DEC or iDEC) model is saved to "results/sdec/SDEC_model_final.h5" ("results/dec/DEC_model_final.h5" or "results/idec/IDEC_model_final.h5").
 
